@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Viga&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+// @import "material-icons/iconfont/material-icons.scss";
+// bootstrap
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables";
+@import "./helpers/utilities";
+@import "~bootstrap/scss/bootstrap";
+
+// config
+@import "./config/base";
+
+// components
+@import "./components/icon";
+@import "./components/button";

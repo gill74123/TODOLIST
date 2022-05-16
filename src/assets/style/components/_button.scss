@@ -1,0 +1,10 @@
+.btn-tab {
+  color: $light;
+  border-radius: 0;
+  border-bottom: 3px solid $gray-400;
+  &.active {
+    border-bottom: 3px solid $primary;
+    color: $dark;
+    font-weight: bold;
+  }
+}
