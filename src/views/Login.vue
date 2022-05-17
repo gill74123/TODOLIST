@@ -62,7 +62,7 @@ export default {
           this.$router.push('/todo');
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessage(err.response.data);
         });
     },
   },

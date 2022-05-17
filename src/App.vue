@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ToastMessages />
     <RouterView />
   </div>
 </template>

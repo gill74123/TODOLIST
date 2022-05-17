@@ -122,11 +122,12 @@ export default {
           .then(() => {
             this.getTodos();
           })
-          .catch((err) => {
-            console.log(err);
+          .catch(() => {
+            this.$httpMessage({ message: '使用者錯誤' });
             this.$router.push('/');
           });
       } else {
+        this.$httpMessage({ message: '使用者錯誤' });
         this.$router.push('/');
       }
     },
@@ -137,7 +138,7 @@ export default {
           this.$router.push('/');
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessage(err.response.data);
         });
     },
     getTodos() {
@@ -149,7 +150,7 @@ export default {
           this.changeTab();
         })
         .catch((err) => {
-          console.log(err);
+          this.$httpMessage(err.response.data);
         });
     },
     addTodo() {
@@ -160,8 +161,8 @@ export default {
           this.todo = '';
           this.getTodos();
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          this.$httpMessage({ message: '新增失敗' });
         });
     },
     deleteTodo(todoId) {
@@ -170,8 +171,8 @@ export default {
         .then(() => {
           this.getTodos();
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          this.$httpMessage({ message: '刪除失敗' });
         });
     },
     toggleTodo(todoId) {
@@ -180,8 +181,8 @@ export default {
         .then(() => {
           this.getTodos();
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          this.$httpMessage({ message: '操作失敗' });
         });
     },
     changeTab(pageStatus = 'all') {
@@ -202,9 +203,11 @@ export default {
             .then(() => {
               this.getTodos();
             })
-            .catch((err) => {
-              console.log(err);
+            .catch(() => {
+              this.$httpMessage({ message: '刪除失敗' });
             });
+        } else {
+          this.$httpMessage({ message: '無已完成項目' });
         }
       });
     },
@@ -223,8 +226,8 @@ export default {
           this.isEdit = false;
           this.getTodos();
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          this.$httpMessage({ message: '修改失敗' });
         });
     },
   },
