@@ -52,10 +52,10 @@
         </ul>
         <ul class="p-4 pb-0">
           <li v-for="todo in filterTodos" :key="todo" class="d-flex border-bottom py-3 mb-2">
-            <div class="form-check d-flex align-items-center m-0 px-0">
+            <div class="form-check d-flex align-items-center w-80 m-0 px-0">
               <input class="form-check-input fs-5 m-0" type="checkbox" :id="todo.id"
                 :checked="todo.completed_at" @change="toggleTodo(todo.id)" />
-              <label v-if="todo.completed_at" class="form-check-label px-3"
+              <label v-if="todo.completed_at" class="form-check-label w-90 px-3"
                 :for="todo.id" :class="{ 'text-light': todo.completed_at }">
                 <del class="fw-medium">{{ todo.content }}</del>
               </label>
@@ -67,7 +67,7 @@
                   <span class="material-icons-outlined text-light align-middle">save</span>
                 </button>
               </div>
-              <label v-else class="form-check-label fw-medium px-3"
+              <label v-else class="form-check-label fw-medium w-90 px-3"
                 :for="todo.id" :class="{ 'text-light': todo.completed_at }">
                 {{ todo.content }}
               </label>
@@ -196,6 +196,10 @@ export default {
       }
     },
     deleteAllFinishedTodo() {
+      if (this.todoList.length - this.unfinishedNum === 0) {
+        this.$httpMessage({ message: '無已完成的項目' });
+        return;
+      }
       this.todoList.forEach((item) => {
         if (item.completed_at) {
           this.$http
@@ -206,8 +210,6 @@ export default {
             .catch(() => {
               this.$httpMessage({ message: '刪除失敗' });
             });
-        } else {
-          this.$httpMessage({ message: '無已完成項目' });
         }
       });
     },

@@ -16,7 +16,7 @@
         <input type="text" class="form-control" id="nickname" placeholder="請輸入您的姓名"
           required v-model.trim="user.nickname" />
       </div>
-      <div class="mb-5">
+      <div class="mb-3">
         <label for="signUpPassword" class="form-label">
           <span class="text-danger fw-bold me-1">*</span>密碼
         </label>
@@ -24,14 +24,14 @@
           placeholder="請輸入密碼，至少六位數" required pattern="^.{6,}$"
           v-model.trim="user.password" />
       </div>
-      <!-- <div class="mb-5">
+      <div class="mb-5">
         <label for="passwordCheck" class="form-label">
           <span class="text-danger fw-bold me-1">*</span>再次輸入密碼
         </label>
         <input type="password" class="form-control" id="passwordCheck"
           placeholder="請再次輸入密碼" required pattern="^.{6,}$"
           v-model.trim="user.passwordCheck" />
-      </div> -->
+      </div>
       <div class="d-flex justify-content-evenly align-items-center">
         <RouterLink to="/"
           class="btn btn-outline-light w-50 me-2">
@@ -77,6 +77,5 @@ export default {
         });
     },
   },
-  mounted() {},
 };
 </script>
